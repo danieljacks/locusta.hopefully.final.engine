@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.lwjgl.util.vector.Vector3f;
 
-import animation.AnimatedModel;
 import skybox.Skybox;
 import textures.Texture;
 import utils.ICamera;
@@ -21,7 +20,7 @@ public class Scene {
 	private List<Entity> underwaterEntities = new ArrayList<Entity>();
 	private List<Entity> importantEntities = new ArrayList<Entity>();
 	private List<Entity> shinyEntities = new ArrayList<Entity>();
-	private List<AnimatedModel> animatedEntities = new ArrayList<>();
+	private List<Entity> animatedEntities = new ArrayList<>();
 	private List<WaterTile> waterTiles = new ArrayList<WaterTile>();
 	
 	private ICamera camera;
@@ -89,7 +88,7 @@ public class Scene {
 		}
 	}
 	
-	public void addAnimatedEntity(AnimatedModel entity) {
+	public void addAnimatedEntity(Entity entity) {
 		animatedEntities.add(entity);
 //		if(entity.isSeenUnderWater()){
 //			underwaterEntities.add(entity);
@@ -134,7 +133,7 @@ public class Scene {
 		return standardEntities;
 	}
 	
-	public List<AnimatedModel> getAnimatedEntities() {
+	public List<Entity> getAnimatedEntities() {
 		return animatedEntities;
 	}
 

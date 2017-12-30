@@ -1,11 +1,10 @@
-package renderer;
+package animationRenderer;
 
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 
-import animation.AnimatedModel;
 import scene.Entity;
 import utils.ICamera;
 import utils.OpenGlUtils;
@@ -43,14 +42,14 @@ public class AnimatedModelRenderer {
 	 * @param lightDir
 	 *            - the direction of the light in the scene.
 	 */
-	public void render(List<AnimatedModel> entities, ICamera camera, Vector3f lightDir) {
+	public void render(List<Entity> entities, ICamera camera, Vector3f lightDir) {
 		prepare(camera, lightDir);
-		for (AnimatedModel entity : entities) {
-		entity.getTexture().bindToUnit(0);
-		entity.getModel().bind(0, 1, 2, 3, 4);
+		for (Entity entity : entities) {
+		entity.getSkin().getDiffuseTexture().bindToUnit(0);
+		entity.getModel().getVao().bind(0, 1, 2, 3, 4);
 		this.shader.jointTransforms.loadMatrixArray(entity.getJointTransforms());
-		GL11.glDrawElements(GL11.GL_TRIANGLES, entity.getModel().getIndexCount(), GL11.GL_UNSIGNED_INT, 0);
-		entity.getModel().unbind(0, 1, 2, 3, 4);
+		GL11.glDrawElements(GL11.GL_TRIANGLES, entity.getModel().getVao().getIndexCount(), GL11.GL_UNSIGNED_INT, 0);
+		entity.getModel().getVao().unbind(0, 1, 2, 3, 4);
 		}
 		finish();
 	}

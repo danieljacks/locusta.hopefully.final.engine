@@ -1,4 +1,4 @@
-package renderer;
+package animationRenderer;
 
 import shaders.ShaderProgram;
 import shaders.UniformMat4Array;
@@ -12,8 +12,8 @@ public class AnimatedModelShader extends ShaderProgram {
 	private static final int MAX_JOINTS = 50;// max number of joints in a skeleton
 	private static final int DIFFUSE_TEX_UNIT = 0;
 
-	private static final MyFile VERTEX_SHADER = new MyFile("renderer", "animatedEntityVertex.glsl");
-	private static final MyFile FRAGMENT_SHADER = new MyFile("renderer", "animatedEntityFragment.glsl");
+	private static final MyFile VERTEX_SHADER = new MyFile("animationRenderer", "animatedEntityVertex.glsl");
+	private static final MyFile FRAGMENT_SHADER = new MyFile("animationRenderer", "animatedEntityFragment.glsl");
 
 	protected UniformMatrix projectionViewMatrix = new UniformMatrix("projectionViewMatrix");
 	protected UniformVec3 lightDirection = new UniformVec3("lightDirection");

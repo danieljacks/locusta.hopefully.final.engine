@@ -4,8 +4,8 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.util.vector.Vector4f;
 
+import animationRenderer.AnimatedModelRenderer;
 import entityRenderers.EntityRenderer;
-import renderer.AnimatedModelRenderer;
 import scene.Scene;
 import shinyRenderer.ShinyRenderer;
 import skybox.SkyboxRenderer;

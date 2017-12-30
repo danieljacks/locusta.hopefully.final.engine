@@ -1,6 +1,5 @@
 package loaders;
 
-import animation.AnimatedModel;
 import animation.Joint;
 import colladaLoader.ColladaLoader;
 import dataStructures.AnimatedModelData;
@@ -9,6 +8,9 @@ import dataStructures.MeshData;
 import dataStructures.SkeletonData;
 import main.GeneralSettings;
 import openglObjects.Vao;
+import scene.Entity;
+import scene.Model;
+import scene.Skin;
 import textures.Texture;
 import utils.MyFile;
 
@@ -23,13 +25,13 @@ public class AnimatedModelLoader {
 	 *            - the file containing the data for the entity.
 	 * @return The animated entity (no animation applied though)
 	 */
-	public static AnimatedModel loadEntity(MyFile modelFile, MyFile textureFile) {
+	public static Entity loadEntity(MyFile modelFile, MyFile textureFile) {
 		AnimatedModelData entityData = ColladaLoader.loadColladaModel(modelFile, GeneralSettings.MAX_WEIGHTS);
-		Vao model = createVao(entityData.getMeshData());
-		Texture texture = loadTexture(textureFile);
+		Model model = new Model(createVao(entityData.getMeshData()));
+		Skin texture = new Skin(loadTexture(textureFile), null);
 		SkeletonData skeletonData = entityData.getJointsData();
 		Joint headJoint = createJoints(skeletonData.headJoint);
-		return new AnimatedModel(model, texture, headJoint, skeletonData.jointCount);
+		return new Entity(model, texture, headJoint, skeletonData.jointCount);
 	}
 
 	/**

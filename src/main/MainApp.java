@@ -3,7 +3,6 @@ package main;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
-import animation.AnimatedModel;
 import animation.Animation;
 import extra.Camera;
 import lensFlare.FlareManager;
@@ -14,6 +13,7 @@ import loaders.LoaderSettings;
 import loaders.SceneLoader;
 import loaders.SceneLoaderFactory;
 import renderEngine.RenderEngine;
+import scene.Entity;
 import scene.Scene;
 import sunRenderer.Sun;
 import sunRenderer.SunRenderer;
@@ -56,7 +56,7 @@ public class MainApp {
 		theSun.setDirection(WorldSettings.LIGHT_DIR);
 		
 		//animation test
-		AnimatedModel guy = AnimatedModelLoader.loadEntity(new MyFile("res", GeneralSettings.MODEL_FILE),
+		Entity guy = AnimatedModelLoader.loadEntity(new MyFile("res", GeneralSettings.MODEL_FILE),
 				new MyFile("res", GeneralSettings.DIFFUSE_FILE));
 		Animation animation = AnimationLoader.loadAnimation(new MyFile("res", GeneralSettings.ANIM_FILE));
 		guy.doAnimation(animation);

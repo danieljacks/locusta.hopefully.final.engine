@@ -5,13 +5,14 @@ import java.util.Map;
 
 import org.lwjgl.util.vector.Matrix4f;
 
+import scene.Entity;
 import utils.DisplayManager;
 
 /**
  * 
  * This class contains all the functionality to apply an animation to an
  * animated entity. An Animator instance is associated with just one
- * {@link AnimatedModel}. It also keeps track of the running time (in seconds)
+ * {@link AnimatedEntity}. It also keeps track of the running time (in seconds)
  * of the current animation, along with a reference to the currently playing
  * animation for the corresponding entity.
  * 
@@ -31,7 +32,7 @@ import utils.DisplayManager;
  */
 public class Animator {
 
-	private final AnimatedModel entity;
+	private final Entity entity;
 
 	private Animation currentAnimation;
 	private float animationTime = 0;
@@ -40,7 +41,7 @@ public class Animator {
 	 * @param entity
 	 *            - the entity which will by animated by this animator.
 	 */
-	public Animator(AnimatedModel entity) {
+	public Animator(Entity entity) {
 		this.entity = entity;
 	}
 
